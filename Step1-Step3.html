@@ -30,14 +30,20 @@ var nSecondsToWait = 30;
 <DIV id="PagePanel">
 	<DIV id="PageSteps"></DIV>
 	<DIV class="PageStep" id="PageStep1" alt="Step 1. 讀取實習醫師名單">
-		<DIV>載入實習醫師名單：<INPUT type="file" name="internFile" class="LocalFile" style="width: 700px;" onchange="LoadInternFile(this.value);"><BR/>
-			<TEXTAREA id="internList" name="internList" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/><BUTTON onclick="LoadInternText($('#internList').val());" style=" margin-left: 20px;">載入結果</BUTTON>
+		<DIV>
+			載入實習醫師名單：<BR/>
+			<TEXTAREA id="internList" name="internList" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/>
+			<BUTTON onclick="LoadInternText($('#internList').val());" style=" margin-left: 20px;">載入結果</BUTTON>
 		</DIV>
 		<DIV id="LoadedStatus"></DIV>
 		<DIV id="LoadedInternList"></DIV>
 	</DIV>
 	<DIV class="PageStep" id="PageStep2" alt="Step 2. 計算隨機亂數">
-		<DIV>魔法隨機數字：<INPUT type="text" id="MagicNumber" name="magicNumber" style="width: 100px;"><INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"></DIV>
+		<DIV>
+			魔法隨機數字：
+			<INPUT type="text" id="MagicNumber" name="magicNumber" style="width: 100px;"></INPUT>
+			<INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"></INPUT>
+		</DIV>
 		<DIV id="MagicInternList"></DIV>
 		<DIV id="Output1" style="display: none;">將結果儲存為CSV檔案：<BR/><BUTTON onclick="CreateOutput1();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/><TEXTAREA id="magicInternListText" name="magicInternListText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA></DIV>
 	</DIV>
@@ -47,9 +53,9 @@ var nSecondsToWait = 30;
 		<DIV id="CourseDispatchedList"></DIV>
 		<DIV id="Output2" style="display: none;">大組分組結果：<BR/><BUTTON onclick="CreateOutput2();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/><TEXTAREA id="courseDispatchedText" name="courseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA></DIV>
 	</DIV>
-	<DIV class="PageStep" id="PageStep4" alt="Step 4. 隨機自選科籤序" link="選課程式-大組內自選科Standalone.html">
+	<DIV class="PageStep" id="PageStep4" alt="Step 4. 隨機自選科籤序" link="Step4-Step5.html">
 	</DIV>
-	<DIV class="PageStep" id="PageStep5" alt="Step 5. 進行自選科排定" link="選課程式-大組內自選科Standalone.html">
+	<DIV class="PageStep" id="PageStep5" alt="Step 5. 進行自選科排定" link="Step4-Step5.html">
 	</DIV>
 	
 </DIV>

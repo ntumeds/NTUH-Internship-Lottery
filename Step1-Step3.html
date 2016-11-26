@@ -31,7 +31,8 @@ var nSecondsToWait = 30;
 	<DIV id="PageSteps"></DIV>
 	<DIV class="PageStep" id="PageStep1" alt="Step 1. 讀取實習醫師名單">
 		<DIV>
-			載入實習醫師名單：<BR/>
+			載入實習醫師名單：
+			<INPUT type="file" name="internFile" class="LocalFile" style="width: 700px;" onchange="LoadInternFile(this.value);"><BR/>
 			<TEXTAREA id="internList" name="internList" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/>
 			<BUTTON onclick="LoadInternText($('#internList').val());" style=" margin-left: 20px;">載入結果</BUTTON>
 		</DIV>
@@ -45,19 +46,27 @@ var nSecondsToWait = 30;
 			<INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"></INPUT>
 		</DIV>
 		<DIV id="MagicInternList"></DIV>
-		<DIV id="Output1" style="display: none;">將結果儲存為CSV檔案：<BR/><BUTTON onclick="CreateOutput1();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/><TEXTAREA id="magicInternListText" name="magicInternListText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA></DIV>
+		<DIV id="Output1" style="display: none;">
+			將結果儲存為CSV檔案：<BR/>
+			<BUTTON onclick="CreateOutput1();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/>
+			<TEXTAREA id="magicInternListText" name="magicInternListText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA>
+		</DIV>
 	</DIV>
 	<DIV class="PageStep" id="PageStep3" alt="Step 3. 進行大組分組">
-		<DIV>載入已分配的籤序：<INPUT type="button" value="載入籤序" onclick="LoadRandomNumbers();"></DIV>
+		<DIV>
+			載入已分配的籤序：
+			<INPUT type="button" value="載入籤序" onclick="LoadRandomNumbers();"></INPUT>
+		</DIV>
 		<DIV id="CourseDispatchedStatus"></DIV>
 		<DIV id="CourseDispatchedList"></DIV>
-		<DIV id="Output2" style="display: none;">大組分組結果：<BR/><BUTTON onclick="CreateOutput2();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/><TEXTAREA id="courseDispatchedText" name="courseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA></DIV>
+		<DIV id="Output2" style="display: none;">
+			大組分組結果：<BR/>
+			<BUTTON onclick="CreateOutput2();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/>
+			<TEXTAREA id="courseDispatchedText" name="courseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA>
+		</DIV>
 	</DIV>
-	<DIV class="PageStep" id="PageStep4" alt="Step 4. 隨機自選科籤序" link="Step4-Step5.html">
-	</DIV>
-	<DIV class="PageStep" id="PageStep5" alt="Step 5. 進行自選科排定" link="Step4-Step5.html">
-	</DIV>
-	
+	<DIV class="PageStep" id="PageStep4" alt="Step 4. 隨機自選科籤序" link="Step4-Step5.html"></DIV>
+	<DIV class="PageStep" id="PageStep5" alt="Step 5. 進行自選科排定" link="Step4-Step5.html"></DIV>
 </DIV>
 
 <SCRIPT type="text/javascript" language="javascript" src="./scripts/shared.js"></SCRIPT>
@@ -77,14 +86,14 @@ function LoadInternFile(file) {
 		success : function (data) {
 			LoadInternText(data);
 		}
-	});	
+	});
 }
 
 function LoadInternText(data) {
 	var interns = data.split('\n');
 
 	AllInterns = [];
-	
+
 	var $source = $("#LoadedInternList");
 	$source.html('<TABLE class="GenericTable"></TABLE>');
 	$source.children().append('<TR><TD>實習醫生編號</TD><TD>學校</TD><TD>實習醫生姓名</TD></TR>');
@@ -95,12 +104,12 @@ function LoadInternText(data) {
 		AllInterns.push({
 			"ID"	:	pieces[0],
 			"School":	pieces[1],
-			"Name"	:	pieces[2],			
+			"Name"	:	pieces[2],
 		});
 		$source.children().append('<TR><TD>' + pieces[0] + '</TD><TD>' + pieces[1] + '</TD><TD>' + pieces[2] +  '</TD></TR>');
 	}
 	$('#LoadedStatus').html('參與本梯次實習醫師分組人數 = ' + AllInterns.length + ' 人');
-	
+
 	$source.css('display', 'block');
 }
 
@@ -123,7 +132,7 @@ function CalculateRandomNumbers() {
 		var index = parseInt(pivot.substring(1), 10);
 		AllInterns[index]["CourseTicket"] = current_ticket++;
 	}
-	
+
 	AllInterns.sort(function(a,b){ return a["CourseTicket"]-b["CourseTicket"]; });
 
 	$list.children().append('<TR><TD>實習醫生編號</TD><TD>學校</TD><TD>實習醫生姓名</TD><TD>大組籤序</TD></TR>');
@@ -137,10 +146,10 @@ function CalculateRandomNumbers() {
 function LoadRandomNumbers() {
 	var $status = $("#CourseDispatchedStatus");
 	$status.html('大組分組說明：<BR/>※過號：輪到選組時，如因未到且無人代理，或選組時間超過'+nSecondsToWait+'秒，將一律順延5號。');
-	
+
 	var $list = $("#CourseDispatchedList");
 	$list.html('<DIV class="divLeft"></DIV><DIV class="divMiddle"></DIV><DIV class="divRight"></DIV>');
-	
+
 	var CourseGroups = [
 		["A01","自選","內科","外科","婦→兒",4],
 		["A02","自選","內科","外科","兒→婦",4],
@@ -211,7 +220,7 @@ function LoadRandomNumbers() {
 		} else {
 			$(".divMiddle").append(tmpStr);
 		}
-		
+
 	}
 
 	// 右邊標題
@@ -256,9 +265,9 @@ function LoadRandomNumbers() {
 			if ($('#InternStudents>.InternStudent').length == 0) { return; } // 沒有要分配的實習醫生了
 			$('#InternStudents>.InternStudent:first').css('cursor', 'pointer').draggable();
 			this.time = nSecondsToWait;
-			this.value = "剩餘" + this.time + "秒";				
+			this.value = "剩餘" + this.time + "秒";
 			var reset = true;
-			
+
 			$(this).everyTime('1s', 'CountDown', function(){
 				if ($('#InternStudents>.InternStudent').length == 0) {
 					$(this).stopTime('CountDown');
@@ -289,7 +298,7 @@ function LoadRandomNumbers() {
 			$('#PassTicket').attr('disabled', true);
 		}
 	});
-	
+
 	$('.divRight').append('<DIV class="Caption">準備順序</DIV>');
 	var interns_count = AllInterns.length;
 	var interns_loaded_no = (interns_count > 20 ? 20 : interns_count);
@@ -304,7 +313,7 @@ function LoadRandomNumbers() {
 	tmpStr = tmpStr + '</DIV>';
 	$('.divRight').append(tmpStr);
 	//$('.divRight').find('.InternStudent:first').css('cursor', 'pointer').draggable();
-	
+
 	$('.SpaceOccupied').droppable({
 		hoverClass: "ui-state-highlight",
 		drop: function( event, ui ) {
@@ -332,16 +341,16 @@ function LoadRandomNumbers() {
 				$('#InternStudents>.InternStudent:first').css('cursor', 'pointer').draggable();
 				$('#PassingTime')[0].time = nSecondsToWait + 1;
 			//} else {
-				
+
 			//}
 		}
-	});	
+	});
 
 	$list.css('display', 'block');
 }
 
 function SkipInternStudents(obj1, index){
-	
+
 	var effector;
 
 	if (typeof(obj1)=='string') {
@@ -353,9 +362,9 @@ function SkipInternStudents(obj1, index){
 	if (obj1 && obj1.hasOwnProperty && obj1 instanceof jQuery){
 		effector = obj1.first();	// 或給 jQuery
 	}
-	
+
 	if (effector == null){ return false; }
-	
+
 	// 確定有東西可以移出
 	// 確保index有效 若無效則為0
 	if (index == null || $('#InternStudents>.InternStudent').length == 0 || index < 0){ index = 0; }
@@ -372,13 +381,13 @@ function SkipInternStudents(obj1, index){
 				break;
 			}
 		}
-		
+
 		if (index == $('#InternStudents>.InternStudent').length){
 			$('#InternStudents').append(tmpStr);
 		} else {
 			$('#InternStudents>.InternStudent').eq(index).before(tmpStr);
 		}
-		
+
 		effector.text('');
 	} else if (effector.parents('#InternStudents').length >= 0) {
 		if (index == $('#InternStudents>.InternStudent').length){
@@ -387,13 +396,13 @@ function SkipInternStudents(obj1, index){
 			$('#InternStudents>.InternStudent').eq(index).before(effector);
 		}
 	}
-	
+
 	return true;
 }
 
 function DoneWithIt() {
 	var spaceOccupied = $(".SpaceOccupied:not(:empty)");
-	
+
 	for (var i = 0; i < spaceOccupied.length; i++) {
 		for(var j = 0; j < AllInterns.length; j++) {
 			if (AllInterns[j]["Name"] == spaceOccupied.eq(i).text()){
@@ -401,9 +410,9 @@ function DoneWithIt() {
 			}
 		}
 	}
-	
+
 	$('#Output2').css('display', 'block');
-	
+
 }
 
 function CreateOutput1() {

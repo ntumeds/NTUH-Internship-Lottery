@@ -46,7 +46,7 @@ var nSecondsToWait = 30;
 		<DIV id="DepartDispatchedList"></DIV>
 		<DIV id="Output4" style="display: none;">自選科選科結果：<BR/><BUTTON onclick="CreateOutput4();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/><TEXTAREA id="departmentDispatchedText" name="departmentDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA></DIV>
 	</DIV>
-	
+
 </DIV>
 
 <SCRIPT type="text/javascript" language="javascript" src="./scripts/shared.js"></SCRIPT>
@@ -101,7 +101,7 @@ function LoadInterns() {
 			"Depart3Id":	"",
 		});
 	}
-	
+
 	$('#MagicInternStatus').css('display', 'block');
 }
 
@@ -150,7 +150,7 @@ function CalculateRandomNumbers() {
 		}
 		j++;
 	}
-	
+
 	$list.children().append('<TR><TD>實習醫生編號</TD><TD>學校</TD><TD>實習醫生姓名</TD><TD>大組籤序</TD><TD>自選科籤序1</TD><TD>自選科籤序2</TD><TD>自選科籤序3</TD><TD>自選科籤序總和</TD></TR>');
 	for (var i = 0; i < interns_count; i++) {
 		AllInterns[i]["DepartTicketSum"] = AllInterns[i]["DepartTicket1"] + AllInterns[i]["DepartTicket2"] + AllInterns[i]["DepartTicket3"];
@@ -166,7 +166,7 @@ function LoadCourseDispatched() {
 	SubInterns['B'] = [];
 	SubInterns['C'] = [];
 	SubInterns['D'] = [];
-	
+
 	if(AllInterns.length<1){
 		var data = $('#subCourseDispatchedText').val();
 		var interns = data.split('\n');
@@ -189,7 +189,7 @@ function LoadCourseDispatched() {
 		}
 	}
 
-	
+
 	for (var i = 0; i < AllInterns.length; i++) {
 		var intern = AllInterns[i];
 		SubInterns[intern["CourseGroupId"][0]].push({
@@ -207,15 +207,15 @@ function LoadCourseDispatched() {
 			"Depart3Id":	intern["Depart3Id"] ? intern["Depart3Id"] : "",
 		});
 	}
-	
+
 	var $status = $("#DepartDispatchedStatus");
 	$status.html('自選科排定說明：<BR/>※過號：輪到選自選科時，如因未到且無人代理，或選擇時間超過'+nSecondsToWait+'秒，將一律順延5號。');
-	
+
 	var $list = $("#DepartDispatchedList");
 	$list.html('<DIV class="divStage div1" index="1"></DIV><DIV class="divStage div2" index="2"></DIV><DIV class="divStage div3" index="3"></DIV><DIV class="divDepartTools"></DIV>');
-	
+
 	$list.css('display', 'block');
-	
+
 	Departments = [
 		["T01",	"骨　科",	"NTUH",	3,3,3,3,3,3,3,3,3,3,3,3],
 		["T02",	"神　經",	"NTUH",	4,4,4,4,4,4,4,4,4,4,4,4],
@@ -252,9 +252,9 @@ function LoadCourseDispatched() {
 		tmpAry['B'] = {1:Departments[i][6],2:Departments[i][7],3:Departments[i][8]};
 		tmpAry['C'] = {1:Departments[i][9],2:Departments[i][10],3:Departments[i][11]};
 		tmpAry['D'] = {1:Departments[i][12],2:Departments[i][13],3:Departments[i][14]};
-		Departments[i]['Limit'] = tmpAry;	
+		Departments[i]['Limit'] = tmpAry;
 	}
-	
+
 	var $dropboxDepartmentGroup = $('<SELECT id="comboSelectDepartmentGroup">').change(function(){
 		CurrentCourseGroup = $(this).val();
 		LoadDepartments(CurrentCourseGroup);
@@ -266,10 +266,10 @@ function LoadCourseDispatched() {
 	$dropboxDepartmentGroup.append('<OPTION value="B">B01~B12</OPTION>');
 	$dropboxDepartmentGroup.append('<OPTION value="C">C01~C12</OPTION>');
 	$dropboxDepartmentGroup.append('<OPTION value="D">D01~D12</OPTION>');
-	
+
 	$('.divDepartTools').html('<DIV class="Caption">選科設定</DIV>自選科分組：');
 	$('.divDepartTools').append($dropboxDepartmentGroup);
-	
+
 	var $dropboxStage = $('<SELECT id="comboSelectStage">').change(function(){
 		CurrentStage = $(this).val();
 		LoadStageInternList(CurrentCourseGroup, CurrentStage);
@@ -278,7 +278,7 @@ function LoadCourseDispatched() {
 	$dropboxStage.append('<OPTION value="1">第一輪</OPTION>');
 	$dropboxStage.append('<OPTION value="2">第二輪</OPTION>');
 	$dropboxStage.append('<OPTION value="3">第三輪</OPTION>');
-	
+
 	$('.divDepartTools').append("<BR/>自選科排定：");
 	$('.divDepartTools').append($dropboxStage);
 
@@ -362,10 +362,10 @@ function LoadCourseDispatched() {
 			$('#comboSelectDepartmentGroup').attr('disabled', false);
 			$('#comboSelectStage').attr('disabled', false);
 		}
-	});	
-	
+	});
+
 	$('.divDepartTools').append('<BR/><DIV class="Caption">準備順序</DIV><DIV id="InternStudentsAll"></DIV>');
-	
+
 	$dropboxDepartmentGroup.val('A').change();
 	$dropboxStage.val('1').change();
 }
@@ -373,7 +373,7 @@ function LoadCourseDispatched() {
 function DropMe(event, ui) {
 	var CurrentCourseGroup = $('#comboSelectDepartmentGroup').val();
 	var CurrentStage = $('#comboSelectStage').val();
-	
+
 	if ($(this).parents('.div'+CurrentStage).length <= 0) { return; }
 
 	var drop_to_id = $(this).parent('.Department').attr('id');
@@ -395,18 +395,18 @@ function DropMe(event, ui) {
 	// 檢查欲選擇的格子是否為NCKUH
 	if ($(this).parent().hasClass('Hospital_NCKUH')) {
 
-		// 若同一個月NCKUH遠人數已超過3人，則無法放入		
+		// 若同一個月NCKUH遠人數已超過3人，則無法放入
 		if ($('.div' + CurrentStage + ' .Hospital_NCKUH .ui-droppable-disabled').length >=3 ) {
-			return;		
+			return;
 		}
         //若非台大生不可以選成大
 		if ($(ui.draggable.find('.schoolname')).text() != "(A台大)"){
 			return;
-		}	
+		}
 		// 若同一人曾經選擇過NCKUH，則無法放入
 		var NCKUH_selected_previously;
 		for (var k = 1; k < CurrentStage; ++k) {
-			$('.div' + k + ' .Hospital_NCKUH .ui-droppable-disabled').each(function() {				 
+			$('.div' + k + ' .Hospital_NCKUH .ui-droppable-disabled').each(function() {
 				if(ui.draggable.find('.StudentName').text() == $(this).text()){
 				NCKUH_selected_previously = true ;
 				}
@@ -437,7 +437,7 @@ function LoadDepartments(CurrentCourseGroup) {
 			var tmpStr = '<DIV class="Department Hospital_'+Departments[i]["Hospital"]+'" id="'+Departments[i]["ID"]+'">';
 			tmpStr = tmpStr + '<DIV class="DepartmentId">'+Departments[i]["ID"]+'</DIV>';
 			tmpStr = tmpStr + '<DIV class="DepartmentName">'+Departments[i]["Name"]+'</DIV>';
-			
+
 			for (j = 0; j < Departments[i]['Limit'][CurrentCourseGroup][k]; j++){
 				tmpStr = tmpStr + '<DIV class="SpaceOccupied ui-state-default"></DIV>';
 			}
@@ -445,32 +445,32 @@ function LoadDepartments(CurrentCourseGroup) {
 				tmpStr = tmpStr + '<DIV class="SpaceEmptied ui-state-default"></DIV>';
 			}
 			tmpStr = tmpStr + '</DIV>';
-			
+
 			$(".div" + k).append(tmpStr);
 		}
 	}
-	
+
 	$('.div1 .SpaceOccupied').droppable({
 		hoverClass: "ui-state-highlight",
-		accept: "#InternStudents1>.InternStudent", 
+		accept: "#InternStudents1>.InternStudent",
 		drop: DropMe
 	});
 	$('.div2 .SpaceOccupied').droppable({
 		hoverClass: "ui-state-highlight",
-		accept: "#InternStudents2>.InternStudent", 
+		accept: "#InternStudents2>.InternStudent",
 		drop: DropMe
 	});
 	$('.div3 .SpaceOccupied').droppable({
 		hoverClass: "ui-state-highlight",
-		accept: "#InternStudents3>.InternStudent", 
+		accept: "#InternStudents3>.InternStudent",
 		drop: DropMe
 	});
 
 	$('#InternStudentsAll').html("");
-	
+
 	for (var depStage = 1; depStage <= 3; depStage++) {
 		var $CurrentStage = $(".div" + depStage);
-		
+
 		SubInterns[CurrentCourseGroup].sort(function(a,b){ return a["DepartTicket"+depStage]-b["DepartTicket"+depStage]; });
 
 		var interns_count = SubInterns[CurrentCourseGroup].length;
@@ -506,12 +506,12 @@ function LoadDepartments(CurrentCourseGroup) {
 function LoadStageInternList(courseGroup, stage) {
 	$('.InternStudents').css('display', 'none');
 	$('#InternStudents'+stage).css('display', '');
-	
+
 	$('#PassingTime')[0].value = "開始選科";
 }
 
 function SkipInternStudents(obj1, index, CurrentStage){
-	
+
 	var effector;
 
 	if (typeof(obj1)=='string') {
@@ -523,11 +523,11 @@ function SkipInternStudents(obj1, index, CurrentStage){
 	if (obj1 && obj1.hasOwnProperty && obj1 instanceof jQuery){
 		effector = obj1.first();	// 或給 jQuery
 	}
-	
+
 	if (effector == null){ return false; }
-	
+
 	var CurrentCourseGroup = $('#comboSelectDepartmentGroup').val();
-	
+
 	// 確定有東西可以/移出
 	// 確保index有效 若無效則為0
 	if (index == null || $('#InternStudents'+CurrentStage+'>.InternStudent').length == 0 || index < 0){ index = 0; }
@@ -550,13 +550,13 @@ function SkipInternStudents(obj1, index, CurrentStage){
 				break;
 			}
 		}
-		
+
 		if (index == $('#InternStudents'+CurrentStage+'>.InternStudent').length) {
 			$('#InternStudents'+CurrentStage).append(tmpStr);
 		} else {
 			$('#InternStudents'+CurrentStage+'>.InternStudent').eq(index).before(tmpStr);
 		}
-		
+
 		effector.text('');
 	} else if (effector.parents('#InternStudents'+CurrentStage).length >= 0) {
 		if (index == $('#InternStudents'+CurrentStage+'>.InternStudent').length){
@@ -565,13 +565,13 @@ function SkipInternStudents(obj1, index, CurrentStage){
 			$('#InternStudents'+CurrentStage+'>.InternStudent').eq(index).before(effector);
 		}
 	}
-	
+
 	return true;
 }
 
 function DoneWithIt() {
 	var CurrentCourseGroup = $('#comboSelectDepartmentGroup').val();
-	
+
 	for (var k = 1; k <= 3; k++) {
 		var spaceOccupied = $(".div"+k+" .SpaceOccupied:not(:empty)");
 		for (var i = 0; i < spaceOccupied.length; i++) {
@@ -579,11 +579,11 @@ function DoneWithIt() {
 			for(var j = 0; j < interns_count; j++) {
 				if (SubInterns[CurrentCourseGroup][j]["Name"] == spaceOccupied.eq(i).text()) {
 					SubInterns[CurrentCourseGroup][j]["Depart"+k+"Id"] = spaceOccupied.eq(i).siblings(".DepartmentId").text();
-				}		
+				}
 			}
 		}
 	}
-	
+
 	$('#Output4').css('display', 'block');
 }
 
@@ -601,10 +601,10 @@ function CreateOutput3() {
 function CreateOutput4() {
 	var CurrentCourseGroup = $('#comboSelectDepartmentGroup').val();
 	var CurrentStage = $('#comboSelectStage').val();
-	
+
 	var interns_count = SubInterns[CurrentCourseGroup].length;
 	SubInterns[CurrentCourseGroup].sort(function(a,b){ return a["ID"]-b["ID"]; });
-	
+
 	var str = "實習醫生編號,學校,實習醫生姓名,大組籤序,自選科籤序1,自選科籤序2,自選科籤序3,自選科籤序總和,大組編號,自選科1編號,自選科2編號,自選科3編號";
 	for (var i = 0; i < interns_count; i++) {
 		str += '\n' + SubInterns[CurrentCourseGroup][i]["ID"] + ',' + SubInterns[CurrentCourseGroup][i]["School"] + ',' + SubInterns[CurrentCourseGroup][i]["Name"] + ',';

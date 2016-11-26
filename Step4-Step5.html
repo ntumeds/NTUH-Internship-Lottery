@@ -36,15 +36,32 @@ var nSecondsToWait = 30;
 	<DIV class="PageStep" id="PageStep3" alt="Step 3. 進行大組分組">
 	</DIV>
 	<DIV class="PageStep" id="PageStep4" alt="Step 4. 隨機自選科籤序">
-		<DIV>請貼上大組分組結果：<BR/><TEXTAREA id="courseDispatchedText" name="courseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/>或直接貼上自選科籤序：<TEXTAREA id="subCourseDispatchedText" name="subCourseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/><BUTTON onclick="LoadInterns();" style=" margin-left: 20px;">載入結果</BUTTON></DIV>
-		<DIV id="MagicInternStatus" style="display: none;">實習醫師名單載入完畢，請輸入魔法隨機數字：<INPUT type="text" id="MagicNumber" name="magicNumber" style="width: 100px;"><INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"></DIV>
+		<DIV>
+			請貼上大組分組結果：<BR/>
+			<TEXTAREA id="courseDispatchedText" name="courseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/>
+			或直接貼上自選科籤序：<TEXTAREA id="subCourseDispatchedText" name="subCourseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/>
+			<BUTTON onclick="LoadInterns();" style=" margin-left: 20px;">載入結果</BUTTON>
+		</DIV>
+		<DIV id="MagicInternStatus" style="display: none;">
+			實習醫師名單載入完畢，請輸入魔法隨機數字：
+			<INPUT type="text" id="MagicNumber" name="magicNumber" style="width: 100px;"></INPUT>
+			<INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"></INPUT>
+		</DIV>
 		<DIV id="MagicInternList"></DIV>
-		<DIV id="Output1" style="display: none;">將結果儲存為CSV檔案：<BR/><BUTTON onclick="CreateOutput3();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/><TEXTAREA id="magicInternListText" name="magicInternListText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA></DIV>
+		<DIV id="Output1" style="display: none;">
+			將結果儲存為CSV檔案：<BR/>
+			<BUTTON onclick="CreateOutput3();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/>
+			<TEXTAREA id="magicInternListText" name="magicInternListText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA>
+		</DIV>
 	</DIV>
 	<DIV class="PageStep" id="PageStep5" alt="Step 5. 進行自選科排定">
 		<DIV id="DepartDispatchedStatus"></DIV>
 		<DIV id="DepartDispatchedList"></DIV>
-		<DIV id="Output4" style="display: none;">自選科選科結果：<BR/><BUTTON onclick="CreateOutput4();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/><TEXTAREA id="departmentDispatchedText" name="departmentDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA></DIV>
+		<DIV id="Output4" style="display: none;">
+			自選科選科結果：<BR/>
+			<BUTTON onclick="CreateOutput4();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/>
+			<TEXTAREA id="departmentDispatchedText" name="departmentDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA>
+		</DIV>
 	</DIV>
 
 </DIV>
@@ -230,8 +247,8 @@ function LoadCourseDispatched() {
 		["T11",	"影　醫",	"NTUH",	3,3,3,3,3,3,3,3,3,3,3,3],
 		["T12",	"急　診",	"NTUH",	4,4,4,4,4,4,4,4,4,4,4,4],
 		["T13",	"家　醫",	"NTUH",	4,4,4,4,4,4,4,4,4,4,4,4],
-		["T14", "環  職",   "NTUH", 3,3,3,3,3,3,3,3,3,3,3,3],
-        ["K01", "皮  膚",   "NCKUH", 0,1,1,1,1,1,1,1,1,1,1,0],
+		["T14", "環　職",	"NTUH", 3,3,3,3,3,3,3,3,3,3,3,3],
+		["K01", "皮　膚",	"NCKUH", 0,1,1,1,1,1,1,1,1,1,1,0],
 		["K02",	"耳鼻喉",	"NCKUH", 0,1,1,1,1,1,1,1,1,1,1,0],
 		["K03",	"泌　尿",	"NCKUH", 0,1,1,1,1,1,1,1,1,1,1,0],
 		["K04",	"神　經",	"NCKUH", 0,1,1,1,1,1,1,1,1,1,1,0],

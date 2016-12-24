@@ -52,7 +52,7 @@ INPUT[type=button] {
 }
 
 .PageStep {
-	width: 1200px;
+	width: 1300px;
 	min-height: 50px;
 	background-color: #dcffcc;
 	border: solid 1px black;
@@ -100,14 +100,14 @@ INPUT[type=button] {
 
 #CourseDispatchedList { min-height: 600px; }
 #CourseDispatchedList DIV			{ display: inline-block; }
-#CourseDispatchedList .divLeft		{ float: left; width: 510px; }
-#CourseDispatchedList .divMiddle	{ float: left; width: 510px; }
+#CourseDispatchedList .divLeft		{ float: left; width: 560px; }
+#CourseDispatchedList .divMiddle	{ float: left; width: 560px; }
 #CourseDispatchedList .divRight		{ float: left; width: 160px; padding: 1px; text-align: center; align: center; }
 
-#CourseDispatchedList .CourseGroup, 
-#CourseDispatchedList .CourseGroupId, 
-#CourseDispatchedList .CourseName, 
-#CourseDispatchedList .SpaceOccupied, 
+#CourseDispatchedList .CourseGroup,
+#CourseDispatchedList .CourseGroupId,
+#CourseDispatchedList .CourseName,
+#CourseDispatchedList .SpaceOccupied,
 #CourseDispatchedList .SpaceEmptied {
 	height: 22px;
 	font-size: 9pt;
@@ -191,16 +191,16 @@ INPUT[type=button] {
 	background-color: #ffffcc;
 	float: right;
 	position: absolute;
-	width: 220px; 
-	padding: 1px; 
-	text-align: center; 
+	width: 220px;
+	padding: 1px;
+	text-align: center;
 	align: center;
 }
 
-#DepartDispatchedList .Department, 
-#DepartDispatchedList .DepartmentId, 
-#DepartDispatchedList .DepartmentName, 
-#DepartDispatchedList .SpaceOccupied, 
+#DepartDispatchedList .Department,
+#DepartDispatchedList .DepartmentId,
+#DepartDispatchedList .DepartmentName,
+#DepartDispatchedList .SpaceOccupied,
 #DepartDispatchedList .SpaceEmptied {
 	height: 22px;
 	font-size: 9pt;

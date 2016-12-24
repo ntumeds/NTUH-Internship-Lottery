@@ -204,17 +204,17 @@ function LoadRandomNumbers() {
 	var i,j,k;
 	for (i = 0; i < CourseGroups.length; i++) {
 		var tmpStr = '<DIV class="CourseGroup" id="'+CourseGroups[i][0]+'">';
-		tmpStr = tmpStr + '<DIV class="CourseGroupId">'+CourseGroups[i][0]+'</DIV>';
+		tmpStr += '<DIV class="CourseGroupId">'+CourseGroups[i][0]+'</DIV>';
 		for(j=1; j<=4;j++){
-			tmpStr=tmpStr + '<DIV class="CourseName">'+CourseGroups[i][j]+'</DIV>';
+			tmpStr += '<DIV class="CourseName">'+CourseGroups[i][j]+'</DIV>';
 		}
 		for(j=0; j<CourseGroups[i][5];j++){
-			tmpStr=tmpStr + '<DIV class="SpaceOccupied ui-state-default"></DIV>';
+			tmpStr += '<DIV class="SpaceOccupied ui-state-default"></DIV>';
 		}
-		for(j=0; j<4-CourseGroups[i][5];j++){
-			tmpStr=tmpStr + '<DIV class="SpaceEmptied ui-state-default"></DIV>';
+		for(j=0; j<5-CourseGroups[i][5];j++){
+			tmpStr += '<DIV class="SpaceEmptied ui-state-default"></DIV>';
 		}
-		tmpStr = tmpStr + '</DIV>';
+		tmpStr += '</DIV>';
 		if (i < CourseGroups.length / 2) {
 			$(".divLeft").append(tmpStr);
 		} else {

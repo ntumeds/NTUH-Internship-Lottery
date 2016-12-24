@@ -115,6 +115,7 @@ function LoadInternText(data) {
 
 function CalculateRandomNumbers() {
 	var seed = parseInt($('#MagicNumber').val(), 10);
+	seed += Math.floor(Math.random() * AllInterns.length);
 	RandSetSeed(seed);
 	var interns_count = AllInterns.length;
 	var course_set = {}

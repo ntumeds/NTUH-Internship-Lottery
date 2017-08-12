@@ -1,0 +1,6 @@
+B00401XXX,A台大,A台大
+TMU01,B北醫,B北醫
+KMU01,C高醫,C高醫
+FJU01,D輔仁,D輔仁
+CMU01,E中國,E中國
+CSMU01,F中山,F中山

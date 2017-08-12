@@ -9,7 +9,7 @@
 學生姓名絕對不能有一模一樣的，否則排序會混亂，後果不堪設想！
 
 ## 操作步驟
-在 Step 1 中，上傳實習醫師名單，歡迎使用範本 [src/main/webapp/SAMPLE.csv](src/main/webapp/SAMPLE.csv)
+在 Step 1 中，上傳實習醫師名單，歡迎使用範本 [SAMPLE.csv](src/main/webapp/SAMPLE.csv)
 
 接下來的步驟比較複雜，請自行嘗試，就不在此說明了，自己的分發程式自己試！
 
@@ -23,14 +23,9 @@
 目前由 NTU Med00 羅文斌同學協助維護。
 
 ## 歷年志願選填負責人
-2015 NTU Med98 陳子揚
-b98401121@ntu.edu.tw
-
-2016 NTU Med99 李怡德
-b99401045@ntu.edu.tw
-
-2017 NTU Med00 李家誠
-b00401025@ntu.edu.tw
+- 2015 NTU Med98 陳子揚 b98401121@ntu.edu.tw
+- 2016 NTU Med99 李怡德 b99401045@ntu.edu.tw
+- 2017 NTU Med00 李家誠 b00401025@ntu.edu.tw
 
 ## 版權
 程式版權屬於台大醫學系 (2017)

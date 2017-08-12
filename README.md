@@ -3,7 +3,7 @@
 請由以下方式 2 選 1 來使用本抽籤程式：
 
 - 線上模式：[https://www.csie.ntu.edu.tw/~b00401062/](https://www.csie.ntu.edu.tw/~b00401062/)
-- 本機模式：下載程式  [https://github.com/ntumeds/NTUH-Internship-Lottery/archive/master.zip](https://github.com/ntumeds/NTUH-Internship-Lottery/archive/master.zip) 並透過瀏覽器來開啟選課程式主檔案 [src/main/webapp/index.html](src/main/webapp/index.html)
+- 本機模式：下載程式  [master.zip](https://github.com/ntumeds/NTUH-Internship-Lottery/archive/master.zip) 並透過瀏覽器來開啟選課程式主檔案 [index.html](src/main/webapp/index.html)
 
 ## 注意事項
 學生姓名絕對不能有一模一樣的，否則排序會混亂，後果不堪設想！

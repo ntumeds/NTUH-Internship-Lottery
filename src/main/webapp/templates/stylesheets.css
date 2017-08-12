@@ -17,8 +17,7 @@ INPUT[type=file] {
 }
 
 INPUT[type=file].LocalFile {
-	display: none;
-	display: inline\9;
+	display: inline;
 }
 
 INPUT[type=button] {

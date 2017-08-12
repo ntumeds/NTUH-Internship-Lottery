@@ -1,10 +1,7 @@
 <HTML>
 
 <HEAD>
-	<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
-	<META http-equiv="Pragma" content="no-cache" />
-	<META http-equiv="Expires" content="Mon, 25 May 1997 12:00:00 GMT" />
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<META name="robots" content="noindex, nofollow" />
 	<META http-equiv="X-UA-Compatible" content="IE=8" />
 	<TITLE>2017臺大醫院實習醫師分組程式</TITLE>
@@ -20,7 +17,7 @@
 <SCRIPT type="text/javascript" language="javascript" src="./scripts/public.js"></SCRIPT>
 
 <SCRIPT language="javascript">
-var nSecondsToWait = 30;
+const nSecondsToWait = 30;
 </SCRIPT>
 
 <BODY>
@@ -30,21 +27,15 @@ var nSecondsToWait = 30;
 <DIV id="PagePanel">
 	<DIV id="PageSteps"></DIV>
 	<DIV class="PageStep" id="PageStep1" alt="Step 1. 讀取實習醫師名單">
-		<DIV>
-			載入實習醫師名單：
-			<INPUT type="file" name="internFile" class="LocalFile" style="width: 700px;" onchange="LoadInternFile(this.value);"><BR/>
-			<TEXTAREA id="internList" name="internList" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/>
-			<BUTTON onclick="LoadInternText($('#internList').val());" style=" margin-left: 20px;">載入結果</BUTTON>
-		</DIV>
+		載入實習醫師名單：
+		<INPUT type="file" name="internFile" class="LocalFile" onchange="LoadInternFile(this.files[0]);">
 		<DIV id="LoadedStatus"></DIV>
 		<DIV id="LoadedInternList"></DIV>
 	</DIV>
 	<DIV class="PageStep" id="PageStep2" alt="Step 2. 計算隨機亂數">
-		<DIV>
-			魔法隨機數字：
-			<INPUT type="text" id="MagicNumber" name="magicNumber" style="width: 100px;"></INPUT>
-			<INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"></INPUT>
-		</DIV>
+		魔法隨機數字：
+		<INPUT type="text" id="MagicNumber" name="magicNumber" style="width: 100px;"/>
+		<INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"/>
 		<DIV id="MagicInternList"></DIV>
 		<DIV id="Output1" style="display: none;">
 			將結果儲存為CSV檔案：<BR/>
@@ -53,10 +44,8 @@ var nSecondsToWait = 30;
 		</DIV>
 	</DIV>
 	<DIV class="PageStep" id="PageStep3" alt="Step 3. 進行大組分組">
-		<DIV>
-			載入已分配的籤序：
-			<INPUT type="button" value="載入籤序" onclick="LoadRandomNumbers();"></INPUT>
-		</DIV>
+		載入已分配的籤序：
+		<INPUT type="button" value="載入籤序" onclick="LoadRandomNumbers();"/>
 		<DIV id="CourseDispatchedStatus"></DIV>
 		<DIV id="CourseDispatchedList"></DIV>
 		<DIV id="Output2" style="display: none;">
@@ -77,23 +66,25 @@ CreatePageSteps();
 var AllInterns = [];
 
 function LoadInternFile(file) {
-	var regex = /[a-zA-Z\:]+\\([^\\]+\\)+/gi;
-	var filename = file.replace(regex, "");
-	var $source = $("#LoadedInternList");
-	$.ajax({
-		url : filename,
-		dataType: "text",
-		success : function (data) {
-			LoadInternText(data);
-		}
-	});
+	if (file.constructor.name != "File") {
+		window.alert("Unknown error");
+		return;
+	}
+	var reader = new FileReader();
+	reader.readAsText(file, 'UTF-8');
+	reader.onload = function(event) {
+		LoadInternText(reader.result);
+	}
 }
 
 function LoadInternText(data) {
-	var interns = data.split('\n');
-
+	var lines = data.split('\n');
+	if (lines[0] != '實習醫生編號,學校,實習醫生姓名') {
+		window.alert("請確認名單第一行為：\n實習醫生編號,學校,實習醫生姓名");
+		return;
+	}
+	var interns = lines.slice(1);
 	AllInterns = [];
-
 	var $source = $("#LoadedInternList");
 	$source.html('<TABLE class="GenericTable"></TABLE>');
 	$source.children().append('<TR><TD>實習醫生編號</TD><TD>學校</TD><TD>實習醫生姓名</TD></TR>');
@@ -104,12 +95,11 @@ function LoadInternText(data) {
 		AllInterns.push({
 			"ID"	:	pieces[0],
 			"School":	pieces[1],
-			"Name"	:	pieces[2],
+			"Name"	:	pieces[2]
 		});
 		$source.children().append('<TR><TD>' + pieces[0] + '</TD><TD>' + pieces[1] + '</TD><TD>' + pieces[2] +  '</TD></TR>');
 	}
 	$('#LoadedStatus').html('參與本梯次實習醫師分組人數 = ' + AllInterns.length + ' 人');
-
 	$source.css('display', 'block');
 }
 
@@ -118,7 +108,7 @@ function CalculateRandomNumbers() {
 	seed += Math.floor(Math.random() * AllInterns.length);
 	RandSetSeed(seed);
 	var interns_count = AllInterns.length;
-	var course_set = {}
+	var course_set = {};
 
 	var $list = $("#MagicInternList");
 	$list.html('<TABLE class="GenericTable"></TABLE>');
@@ -202,7 +192,7 @@ function LoadRandomNumbers() {
 		["D12","兒→婦","外科","內科","自選",4]
 	];
 
-	var i,j,k;
+	var i,j;
 	for (i = 0; i < CourseGroups.length; i++) {
 		var tmpStr = '<DIV class="CourseGroup" id="'+CourseGroups[i][0]+'">';
 		tmpStr += '<DIV class="CourseGroupId">'+CourseGroups[i][0]+'</DIV>';

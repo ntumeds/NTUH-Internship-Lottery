@@ -8,7 +8,7 @@
 學生姓名絕對不能有一模一樣的，否則排序會混亂，後果不堪設想！
 
 ## 操作步驟
-在 Step 1 中，貼上參加抽籤者的名單，歡迎使用範本 [src/main/webapp/SAMPLE.txt](src/main/webapp/SAMPLE.txt)
+在 Step 1 中，貼上參加抽籤者的名單，歡迎使用範本 [src/main/webapp/SAMPLE.csv](src/main/webapp/SAMPLE.csv)
 
 接下來的步驟比較複雜，請自行嘗試，就不在此說明了，自己的分發程式自己試！
 

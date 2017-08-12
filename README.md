@@ -2,13 +2,13 @@
 連結 [https://github.com/ntumeds/NTUH-Internship-Lottery/archive/master.zip](https://github.com/ntumeds/NTUH-Internship-Lottery/archive/master.zip)
 
 ## 開啟程式
-建議透過 Google Chrome 來開啟選課程式主檔案 [Step1-Step3.html](Step1-Step3.html)
+建議透過 Google Chrome 來開啟選課程式主檔案 [src/main/webapp/index.html](src/main/webapp/index.html)
 
 ## 注意事項
 學生姓名絕對不能有一模一樣的，否則排序會混亂，後果不堪設想！
 
 ## 操作步驟
-在 Step 1 中，貼上參加抽籤者的名單，歡迎使用範本 [SAMPLE.txt](SAMPLE.txt)
+在 Step 1 中，貼上參加抽籤者的名單，歡迎使用範本 [src/main/webapp/SAMPLE.txt](src/main/webapp/SAMPLE.txt)
 
 接下來的步驟比較複雜，請自行嘗試，就不在此說明了，自己的分發程式自己試！
 

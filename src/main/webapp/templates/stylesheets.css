@@ -27,6 +27,12 @@ INPUT[type=button] {
 	background-color: #ffee00;
 }
 
+TEXTAREA {
+	width: 1300px;
+	height: 100px;
+	resize: vertical;
+}
+
 .MenuButton {
 	background-color: green;
 	padding: 4px 5px 5px 5px;

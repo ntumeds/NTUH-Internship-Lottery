@@ -26,36 +26,40 @@ const nSecondsToWait = 30;
 
 <DIV id="PagePanel">
 	<DIV id="PageSteps"></DIV>
-	<DIV class="PageStep" id="PageStep1" alt="Step 1. 讀取實習醫師名單">
-		載入實習醫師名單：
-		<INPUT type="file" name="internFile" class="LocalFile" onchange="LoadInternFile(this.files[0]);">
+	<DIV class="PageStep" id="PageStep1" alt="Step 1. 隨機大組籤序">
+		<DIV>
+			載入實習醫師名單：
+			<INPUT type="file" name="internFile" class="LocalFile" onchange="LoadInternFile(this.files[0]);">
+		</DIV>
 		<DIV id="LoadedStatus"></DIV>
 		<DIV id="LoadedInternList"></DIV>
-	</DIV>
-	<DIV class="PageStep" id="PageStep2" alt="Step 2. 計算隨機亂數">
-		魔法隨機數字：
-		<INPUT type="text" id="MagicNumber" name="magicNumber" style="width: 100px;"/>
-		<INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"/>
+		<DIV id="MagicInternStatus" style="display: none;">
+			實習醫師名單載入完畢，請輸入魔法隨機數字：
+			<INPUT type="text" id="MagicNumber" name="magicNumber" style="width: 100px;"/>
+			<INPUT type="button" value="下好離手" onclick="CalculateRandomNumbers();"/>
+		</DIV>
 		<DIV id="MagicInternList"></DIV>
 		<DIV id="Output1" style="display: none;">
-			將結果儲存為CSV檔案：<BR/>
-			<BUTTON onclick="CreateOutput1();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/>
-			<TEXTAREA id="magicInternListText" name="magicInternListText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA>
+			將結果儲存為CSV檔案：
+			<BUTTON onclick="CreateOutput1();">輸出結果</BUTTON><BR/>
+			<TEXTAREA id="magicInternListText" name="magicInternListText" readonly></TEXTAREA>
 		</DIV>
 	</DIV>
-	<DIV class="PageStep" id="PageStep3" alt="Step 3. 進行大組分組">
-		載入已分配的籤序：
-		<INPUT type="button" value="載入籤序" onclick="LoadRandomNumbers();"/>
+	<DIV class="PageStep" id="PageStep2" alt="Step 2. 進行大組分組">
+		<DIV>
+			載入已分配的籤序：
+			<INPUT type="button" value="載入籤序" onclick="LoadRandomNumbers();"/>
+		</DIV>
 		<DIV id="CourseDispatchedStatus"></DIV>
 		<DIV id="CourseDispatchedList"></DIV>
 		<DIV id="Output2" style="display: none;">
-			大組分組結果：<BR/>
-			<BUTTON onclick="CreateOutput2();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/>
-			<TEXTAREA id="courseDispatchedText" name="courseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA>
+			大組分組結果：
+			<BUTTON onclick="CreateOutput2();">輸出結果</BUTTON><BR/>
+			<TEXTAREA id="courseDispatchedText" name="courseDispatchedText" readonly></TEXTAREA>
 		</DIV>
 	</DIV>
-	<DIV class="PageStep" id="PageStep4" alt="Step 4. 隨機自選科籤序" link="final.html"></DIV>
-	<DIV class="PageStep" id="PageStep5" alt="Step 5. 進行自選科排定" link="final.html"></DIV>
+	<DIV class="PageStep" id="PageStep3" alt="Step 3. 隨機自選科籤序" link="final.html"></DIV>
+	<DIV class="PageStep" id="PageStep4" alt="Step 4. 進行自選科排定" link="final.html"></DIV>
 </DIV>
 
 <SCRIPT type="text/javascript" language="javascript" src="./scripts/shared.js"></SCRIPT>
@@ -101,6 +105,7 @@ function LoadInternText(data) {
 	}
 	$('#LoadedStatus').html('參與本梯次實習醫師分組人數 = ' + AllInterns.length + ' 人');
 	$source.css('display', 'block');
+	$('#MagicInternStatus').css('display', 'block');
 }
 
 function CalculateRandomNumbers() {
@@ -136,7 +141,7 @@ function CalculateRandomNumbers() {
 
 function LoadRandomNumbers() {
 	var $status = $("#CourseDispatchedStatus");
-	$status.html('大組分組說明：<BR/>※過號：輪到選組時，如因未到且無人代理，或選組時間超過'+nSecondsToWait+'秒，將一律順延5號。');
+	$status.html('※過號：輪到選組時，如因未到且無人代理，或選組時間超過'+nSecondsToWait+'秒，將一律順延5號。');
 
 	var $list = $("#CourseDispatchedList");
 	$list.html('<DIV class="divLeft"></DIV><DIV class="divMiddle"></DIV><DIV class="divRight"></DIV>');

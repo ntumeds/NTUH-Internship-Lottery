@@ -20,7 +20,7 @@
 <SCRIPT type="text/javascript" language="javascript" src="./scripts/public.js"></SCRIPT>
 
 <SCRIPT language="javascript">
-var nSecondsToWait = 30;
+const nSecondsToWait = 30;
 </SCRIPT>
 
 <BODY>
@@ -29,19 +29,16 @@ var nSecondsToWait = 30;
 
 <DIV id="PagePanel">
 	<DIV id="PageSteps"></DIV>
-	<DIV class="PageStep" id="PageStep1" alt="Step 1. 讀取實習醫師名單">
-	</DIV>
-	<DIV class="PageStep" id="PageStep2" alt="Step 2. 隨機大組籤序">
-	</DIV>
-	<DIV class="PageStep" id="PageStep3" alt="Step 3. 進行大組分組">
-	</DIV>
-	<DIV class="PageStep" id="PageStep4" alt="Step 4. 隨機自選科籤序">
+	<DIV class="PageStep" id="PageStep1" alt="Step 1. 隨機大組籤序"></DIV>
+	<DIV class="PageStep" id="PageStep2" alt="Step 2. 進行大組分組"></DIV>
+	<DIV class="PageStep" id="PageStep3" alt="Step 3. 隨機自選科籤序">
 		<DIV>
 			請貼上大組分組結果：<BR/>
-			<TEXTAREA id="courseDispatchedText" name="courseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/>
+			<TEXTAREA id="courseDispatchedText" name="courseDispatchedText"></TEXTAREA><BR/>
 			或直接貼上自選科籤序：<BR/>
-			<TEXTAREA id="subCourseDispatchedText" name="subCourseDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;"></TEXTAREA><BR/>
-			<BUTTON onclick="LoadInterns();" style=" margin-left: 20px;">載入結果</BUTTON>
+			<TEXTAREA id="subCourseDispatchedText" name="subCourseDispatchedText"></TEXTAREA><BR/>
+			載入結果：
+			<BUTTON onclick="LoadInterns();">載入結果</BUTTON>
 		</DIV>
 		<DIV id="MagicInternStatus" style="display: none;">
 			實習醫師名單載入完畢，請輸入魔法隨機數字：
@@ -50,18 +47,18 @@ var nSecondsToWait = 30;
 		</DIV>
 		<DIV id="MagicInternList"></DIV>
 		<DIV id="Output1" style="display: none;">
-			將結果儲存為CSV檔案：<BR/>
-			<BUTTON onclick="CreateOutput3();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/>
-			<TEXTAREA id="magicInternListText" name="magicInternListText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA>
+			將結果儲存為CSV檔案：
+			<BUTTON onclick="CreateOutput3();">輸出結果</BUTTON><BR/>
+			<TEXTAREA id="magicInternListText" name="magicInternListText" readonly="true"></TEXTAREA>
 		</DIV>
 	</DIV>
-	<DIV class="PageStep" id="PageStep5" alt="Step 5. 進行自選科排定">
+	<DIV class="PageStep" id="PageStep4" alt="Step 4. 進行自選科分組">
 		<DIV id="DepartDispatchedStatus"></DIV>
 		<DIV id="DepartDispatchedList"></DIV>
 		<DIV id="Output4" style="display: none;">
-			自選科選科結果：<BR/>
-			<BUTTON onclick="CreateOutput4();" style=" margin-left: 20px;">輸出結果</BUTTON><BR/>
-			<TEXTAREA id="departmentDispatchedText" name="departmentDispatchedText" style="width: 1100px; height: 100px; margin-left: 20px;" readonly="true"></TEXTAREA>
+			自選科選科結果：
+			<BUTTON onclick="CreateOutput4();">輸出結果</BUTTON><BR/>
+			<TEXTAREA id="departmentDispatchedText" name="departmentDispatchedText" readonly></TEXTAREA>
 		</DIV>
 	</DIV>
 
@@ -71,7 +68,7 @@ var nSecondsToWait = 30;
 
 <SCRIPT type="text/javascript" language="javascript">
 CreatePageSteps();
-SwitchPageStep('PageStep4');
+SwitchPageStep('PageStep3');
 
 var AllInterns = [], SubInterns = [];
 var Departments = [];
@@ -228,7 +225,7 @@ function LoadCourseDispatched() {
 	}
 
 	var $status = $("#DepartDispatchedStatus");
-	$status.html('自選科排定說明：<BR/>※過號：輪到選自選科時，如因未到且無人代理，或選擇時間超過'+nSecondsToWait+'秒，將一律順延5號。');
+	$status.html('※過號：輪到選自選科時，如因未到且無人代理，或選擇時間超過'+nSecondsToWait+'秒，將一律順延5號。');
 
 	var $list = $("#DepartDispatchedList");
 	$list.html('<DIV class="divStage div1" index="1"></DIV><DIV class="divStage div2" index="2"></DIV><DIV class="divStage div3" index="3"></DIV><DIV class="divDepartTools"></DIV>');
@@ -418,7 +415,7 @@ function DropMe(event, ui) {
 		if ($('.div' + CurrentStage + ' .Hospital_NCKUH .ui-droppable-disabled').length >=3 ) {
 			return;
 		}
-        //若非台大生不可以選成大
+		//若非台大生不可以選成大
 		if ($(ui.draggable.find('.schoolname')).text() != "(A台大)"){
 			return;
 		}

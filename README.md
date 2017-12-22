@@ -35,6 +35,7 @@
 - 2015 NTU Med98 陳子揚 b98401121@ntu.edu.tw
 - 2016 NTU Med99 李怡德 b99401045@ntu.edu.tw
 - 2017 NTU Med00 李家誠 b00401025@ntu.edu.tw
+- 2018 NTU Med01 廖俊勛 b01401097@ntu.edu.tw
 
 ## 版權
 程式版權屬於台大醫學系 (2017)

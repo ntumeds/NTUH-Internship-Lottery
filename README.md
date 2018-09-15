@@ -11,7 +11,7 @@
 ## 操作步驟
 
 1. 隨機大組籤序
-    - 載入實習醫師名單：歡迎使用範本 [SAMPLE.csv](src/main/webapp/SAMPLE.csv)
+    - 載入實習醫師名單：歡迎使用範本 [sample.csv](src/main/webapp/sample.csv)
     - 請輸入魔法隨機數字
     - 將結果儲存為CSV檔案
 2. 進行大組分組
